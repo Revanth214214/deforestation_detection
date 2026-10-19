@@ -34,4 +34,4 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 outputs/
-models/*.pth
+models/
