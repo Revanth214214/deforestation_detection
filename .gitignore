@@ -28,6 +28,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+
+artifacts/
+
 # Project Data & Artifacts (Ignore large rasters and saved model weights)
 data/raw/*
 data/processed/*
