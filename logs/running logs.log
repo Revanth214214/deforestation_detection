@@ -91,3 +91,16 @@
 [2026-10-21 17:41:28,091: INFO: common: created directory at artifacts]
 [2026-10-21 17:41:28,092: INFO: common: created directory at artifacts/data_ingestion]
 [2026-10-21 17:41:28,092: INFO: 157515968: File already exists with size: ~ 184322 KB]
+[2026-10-21 19:22:54,455: INFO: main: >>>>>> Stage Data Ingestion Stage Started <<<<<<<<<<]
+[2026-10-21 19:22:54,456: ERROR: main: DataIngestionTrainingPipeline.__init__() takes 0 positional arguments but 1 was given]
+Traceback (most recent call last):
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\main.py", line 7, in <module>
+    data_ingestion = DataIngestionTrainingPipeline()
+TypeError: DataIngestionTrainingPipeline.__init__() takes 0 positional arguments but 1 was given
+[2026-10-21 19:24:42,761: INFO: main: >>>>>> Stage Data Ingestion Stage Started <<<<<<<<<<]
+[2026-10-21 19:24:42,763: INFO: common: YAML file loaded successfully from: config\config.yaml]
+[2026-10-21 19:24:42,765: INFO: common: YAML file loaded successfully from: params.yaml]
+[2026-10-21 19:24:42,765: INFO: common: created directory at artifacts]
+[2026-10-21 19:24:42,766: INFO: common: created directory at artifacts/data_ingestion]
+[2026-10-21 19:24:42,767: INFO: data_ingestion: File already exists with size: ~ 184322 KB]
+[2026-10-21 19:24:42,767: INFO: main: >>>>>>>>> Stage Data Ingestion Stage Completed <<<<<<<<<<]
