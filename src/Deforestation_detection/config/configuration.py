@@ -2,6 +2,7 @@ from deforestation_detection import *
 from deforestation_detection.logging import logger
 from deforestation_detection.utils.common import read_yaml, create_directories
 from deforestation_detection.entity.config_entity import DataIngestionConfig
+from deforestation_detection.entity.config_entity import DataValidationConfig
 
 
 from deforestation_detection.constant import *
@@ -30,3 +31,15 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    def get_data_validation_config(self) -> DataValidationConfig:
+            config = self.config.data_validation
+    
+            create_directories([config.root_dir])
+    
+            data_validation_config = DataValidationConfig(
+                root_dir = config.root_dir,
+                data_file= config.data_file,
+                STATUS_FILE = config.STATUS_FILE
+            )
+    
+            return data_validation_config
