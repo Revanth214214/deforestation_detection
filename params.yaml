@@ -1,5 +1,5 @@
 TRAIN:
   batch_size: 16
   epochs: 15
-  lr: 0.00002
+  learning_rate: 0.00002
   threshold: 0.6

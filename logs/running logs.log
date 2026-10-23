@@ -141,3 +141,102 @@ TypeError: DataIngestionTrainingPipeline.__init__() takes 0 positional arguments
 [2026-10-23 21:05:34,207: INFO: data_validation: Tensor key 'y_full' validated successfully with shape: torch.Size([144, 1, 256, 256])]
 [2026-10-23 21:05:34,212: INFO: data_validation: Validation status recorded as: True at artifacts/data_validation/status.txt]
 [2026-10-23 21:05:34,234: INFO: main: >>>>>>>>> Stage Data Validation Stage Completed <<<<<<<<<<]
+[2026-10-23 21:46:45,255: INFO: main: >>>>>> Stage Data Ingestion Stage Started <<<<<<<<<<]
+[2026-10-23 21:46:45,260: INFO: common: YAML file loaded successfully from: config\config.yaml]
+[2026-10-23 21:46:45,261: INFO: common: YAML file loaded successfully from: params.yaml]
+[2026-10-23 21:46:45,263: INFO: common: created directory at artifacts]
+[2026-10-23 21:46:45,263: INFO: common: created directory at artifacts/data_ingestion]
+[2026-10-23 21:46:45,263: INFO: data_ingestion: Downloading dataset from Hugging Face into artifacts/data_ingestion/dataset_arrays.pt]
+[2026-10-23 21:46:45,687: INFO: _client: HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"]
+[2026-10-23 21:46:45,815: INFO: _client: HTTP Request: HEAD https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt "HTTP/1.1 401 Unauthorized"]
+[2026-10-23 21:46:45,826: ERROR: main: 401 Client Error. (Request ID: Root=1-6adbc7b5-632b22d5167dadba4855146f;6f70724d-4041-4a96-ba2f-9eb88a0b6f25)
+
+Cannot access gated repo for url https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt.
+Access to dataset Revanth214/Deforestation is restricted. You must have access to it and be authenticated to access it. Please log in.]
+httpx2.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\main.py", line 9, in <module>
+    data_ingestion.main()
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\pipeline\stage_01_DI.py", line 14, in main
+    data_ingestion.download_files()
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\components\data_ingestion.py", line 37, in download_files
+    raise e
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\components\data_ingestion.py", line 24, in download_files
+    downloaded_path = hf_hub_download(
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\utils\_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\utils\_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1194, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1953, in _raise_on_head_call_error
+    raise head_call_error
+huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6adbc7b5-632b22d5167dadba4855146f;6f70724d-4041-4a96-ba2f-9eb88a0b6f25)
+
+Cannot access gated repo for url https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt.
+Access to dataset Revanth214/Deforestation is restricted. You must have access to it and be authenticated to access it. Please log in.
+[2026-10-23 21:54:16,454: INFO: main: >>>>>> Stage Data Ingestion Stage Started <<<<<<<<<<]
+[2026-10-23 21:54:16,458: INFO: common: YAML file loaded successfully from: config\config.yaml]
+[2026-10-23 21:54:16,465: INFO: common: YAML file loaded successfully from: params.yaml]
+[2026-10-23 21:54:16,466: INFO: common: created directory at artifacts]
+[2026-10-23 21:54:16,468: INFO: common: created directory at artifacts/data_ingestion]
+[2026-10-23 21:54:16,468: INFO: data_ingestion: Downloading dataset from Hugging Face into artifacts/data_ingestion/dataset_arrays.pt]
+[2026-10-23 21:54:16,822: INFO: _client: HTTP Request: HEAD https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt "HTTP/1.1 401 Unauthorized"]
+[2026-10-23 21:54:16,824: ERROR: main: 401 Client Error. (Request ID: Root=1-6adbc978-7302ff7619356d175bf4a7e2;642ce106-fc9a-4e67-bb3d-6502d2b65d5b)
+
+Cannot access gated repo for url https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt.
+Access to dataset Revanth214/Deforestation is restricted. You must have access to it and be authenticated to access it. Please log in.]
+httpx2.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\main.py", line 9, in <module>
+    data_ingestion.main()
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\pipeline\stage_01_DI.py", line 14, in main
+    data_ingestion.download_files()
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\components\data_ingestion.py", line 37, in download_files
+    raise e
+  File "C:\Users\sagal\Desktop\Let us build\deforestation_detection\src\deforestation_detection\components\data_ingestion.py", line 24, in download_files
+    downloaded_path = hf_hub_download(
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\utils\_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\utils\_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1194, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "C:\Users\sagal\anaconda3\envs\deforestation\lib\site-packages\huggingface_hub\file_download.py", line 1953, in _raise_on_head_call_error
+    raise head_call_error
+huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6adbc978-7302ff7619356d175bf4a7e2;642ce106-fc9a-4e67-bb3d-6502d2b65d5b)
+
+Cannot access gated repo for url https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt.
+Access to dataset Revanth214/Deforestation is restricted. You must have access to it and be authenticated to access it. Please log in.
+[2026-10-23 21:56:59,657: INFO: main: >>>>>> Stage Data Ingestion Stage Started <<<<<<<<<<]
+[2026-10-23 21:56:59,661: INFO: common: YAML file loaded successfully from: config\config.yaml]
+[2026-10-23 21:56:59,663: INFO: common: YAML file loaded successfully from: params.yaml]
+[2026-10-23 21:56:59,664: INFO: common: created directory at artifacts]
+[2026-10-23 21:56:59,666: INFO: common: created directory at artifacts/data_ingestion]
+[2026-10-23 21:56:59,667: INFO: data_ingestion: Downloading dataset from Hugging Face into artifacts/data_ingestion/dataset_arrays.pt]
+[2026-10-23 21:56:59,954: INFO: _client: HTTP Request: HEAD https://huggingface.co/datasets/Revanth214/Deforestation/resolve/main/dataset_arrays.pt "HTTP/1.1 302 Found"]
+[2026-10-23 21:57:00,308: INFO: _client: HTTP Request: GET https://huggingface.co/api/datasets/Revanth214/Deforestation/xet-read-token/f8959f6d9d1e664cc923036104fc5f1ae0aa656a "HTTP/1.1 200 OK"]
+[2026-10-23 21:57:13,901: INFO: data_ingestion: Successfully downloaded file with size: ~ 184322 KB]
+[2026-10-23 21:57:13,902: INFO: main: >>>>>>>>> Stage Data Ingestion Stage Completed <<<<<<<<<<]
+[2026-10-23 21:57:13,902: INFO: main: >>>>>> Stage Data Validation Stage Started <<<<<<<<<<]
+[2026-10-23 21:57:13,904: INFO: common: YAML file loaded successfully from: config\config.yaml]
+[2026-10-23 21:57:13,906: INFO: common: YAML file loaded successfully from: params.yaml]
+[2026-10-23 21:57:13,906: INFO: common: created directory at artifacts]
+[2026-10-23 21:57:13,908: INFO: common: created directory at artifacts/data_validation]
+[2026-10-23 21:57:13,908: INFO: data_validation: Loading dataset from artifacts/data_ingestion/dataset_arrays.pt for validation...]
+[2026-10-23 21:57:14,216: INFO: data_validation: Tensor key 'X_full' validated successfully with shape: torch.Size([144, 4, 256, 256])]
+[2026-10-23 21:57:14,231: INFO: data_validation: Tensor key 'y_full' validated successfully with shape: torch.Size([144, 1, 256, 256])]
+[2026-10-23 21:57:14,233: INFO: data_validation: Validation status recorded as: True at artifacts/data_validation/status.txt]
+[2026-10-23 21:57:14,258: INFO: main: >>>>>>>>> Stage Data Validation Stage Completed <<<<<<<<<<]
