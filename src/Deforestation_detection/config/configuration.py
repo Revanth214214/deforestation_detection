@@ -3,6 +3,7 @@ from deforestation_detection.logging import logger
 from deforestation_detection.utils.common import read_yaml, create_directories
 from deforestation_detection.entity.config_entity import DataIngestionConfig
 from deforestation_detection.entity.config_entity import DataValidationConfig
+from deforestation_detection.entity.config_entity import ModelTrainerConfig
 
 
 from deforestation_detection.constant import *
@@ -43,3 +44,24 @@ class ConfigurationManager:
             )
     
             return data_validation_config
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+            config = self.config.model_trainer
+            params = self.params.TRAIN
+            
+            create_directories([config.root_dir])
+            
+            model_trainer_config = ModelTrainerConfig(
+                root_dir=Path(config.root_dir),
+                train_data_path=Path(config.train_data_path),
+                model_name=config.model_name,
+                learning_rate=params.learning_rate,
+                weight_decay=params.weight_decay,
+                batch_size=params.batch_size,
+                epochs=params.epochs,
+                pos_weight=params.pos_weight,
+                encoder_name=params.encoder_name,
+                in_channels=params.in_channels,
+                classes=params.classes
+            )
+            
+            return model_trainer_config
