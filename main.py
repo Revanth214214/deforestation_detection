@@ -17,8 +17,8 @@ except Exception as e:
 STAGE_NAME = "Data Validation Stage"
 try:
     logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<<<<<")
-    data_ingestion = DataValidationTrainingPipeline()
-    data_ingestion.main()
+    data_validation = DataValidationTrainingPipeline()
+    data_validation.main()
     logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
 except Exception as e:
     logger.exception(e)
@@ -27,8 +27,8 @@ except Exception as e:
 STAGE_NAME = "Model Trainer Stage"
 try:
     logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<<<<<")
-    data_ingestion = ModelTrainerPipeline()
-    data_ingestion.main()
+    model_trainer = ModelTrainerPipeline()
+    model_trainer.main()
     logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
 except Exception as e:
     logger.exception(e)
@@ -37,8 +37,8 @@ except Exception as e:
 STAGE_NAME = "Model Evaluation Stage"
 try:
     logger.info(f">>>>>> Stage {STAGE_NAME} Started <<<<<<<<<<")
-    data_ingestion = ModelEvaluationPipeline()
-    data_ingestion.main()
+    model_evaluation = ModelEvaluationPipeline()
+    model_evaluation.main()
     logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
 except Exception as e:
     logger.exception(e)
