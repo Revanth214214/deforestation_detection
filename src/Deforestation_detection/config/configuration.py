@@ -4,6 +4,7 @@ from deforestation_detection.utils.common import read_yaml, create_directories
 from deforestation_detection.entity.config_entity import DataIngestionConfig
 from deforestation_detection.entity.config_entity import DataValidationConfig
 from deforestation_detection.entity.config_entity import ModelTrainerConfig
+from deforestation_detection.entity.config_entity import ModelEvaluationConfig
 
 
 from deforestation_detection.constant import *
@@ -65,3 +66,16 @@ class ConfigurationManager:
             )
             
             return model_trainer_config
+    def get_model_evaluation_config(self)-> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir = Path(config.root_dir),
+            model_path = Path(config.model_path),
+            test_data_path = Path(config.test_data_path),
+            metric_file_name=Path(config.metric_file_name)
+            )
+
+        return model_evaluation_config

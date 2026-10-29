@@ -27,3 +27,11 @@ class ModelTrainerConfig:
     encoder_name: str
     in_channels: int
     classes: int
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    model_path: Path
+    test_data_path: Path
+    metric_file_name: Path
+
