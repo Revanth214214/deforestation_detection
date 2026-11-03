@@ -68,15 +68,15 @@ class ConfigurationManager:
             
             return model_trainer_config
     def get_model_evaluation_config(self)-> ModelEvaluationConfig:
-        config = self.config.model_evaluation
+            config = self.config.model_evaluation
 
-        create_directories([config.root_dir])
+            create_directories([config.root_dir])
 
-        model_evaluation_config = ModelEvaluationConfig(
-            root_dir = Path(config.root_dir),
-            model_path = Path(config.model_path),
-            test_data_path = Path(config.test_data_path),
-            metric_file_name=Path(config.metric_file_name)
+            model_evaluation_config = ModelEvaluationConfig(
+                root_dir = Path(config.root_dir),
+                model_path = Path(config.model_path),
+                test_data_path = Path(config.test_data_path),
+                metric_file_name=Path(config.metric_file_name)
             )
 
-        return model_evaluation_config
+            return model_evaluation_config
