@@ -40,13 +40,6 @@ class ModelTrainer:
 
     def train(self):
         try:
-            model_path = Path(self.config.root_dir) / self.config.model_name
-
-            # Skip training if the model checkpoint already exists
-            if os.path.exists(model_path):
-                logger.info(f"Model checkpoint already exists at: {model_path}. Skipping training.")
-                return
-
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             logger.info(f"Using device: {device}")
 
@@ -69,7 +62,7 @@ class ModelTrainer:
             train_loader = DataLoader(train_dataset, batch_size=self.config.batch_size, shuffle=True)
             test_loader = DataLoader(test_dataset, batch_size=self.config.batch_size, shuffle=False)
 
-            # 4. Initialize SMP U-Net Model
+            # 4. Initialize SMP U-Net Model & Load Base Weights (Trial 10 Checkpoint)
             logger.info(f"Initializing U-Net with encoder: {self.config.encoder_name}")
             model = smp.Unet(
                 encoder_name=self.config.encoder_name,
@@ -77,6 +70,12 @@ class ModelTrainer:
                 in_channels=self.config.in_channels,
                 classes=self.config.classes
             ).to(device)
+
+            if os.path.exists(self.config.base_model_path):
+                logger.info(f"Loading base model weights from {self.config.base_model_path}")
+                model.load_state_dict(torch.load(self.config.base_model_path, map_location=device))
+            else:
+                logger.warning(f"Base model weights not found at {self.config.base_model_path}! Training from scratch.")
 
             criterion = RefinedWeightedBCEDiceLoss(pos_weight=self.config.pos_weight)
             optimizer = optim.AdamW(model.parameters(), lr=self.config.learning_rate, weight_decay=self.config.weight_decay)

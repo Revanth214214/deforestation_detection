@@ -54,6 +54,7 @@ class ConfigurationManager:
             model_trainer_config = ModelTrainerConfig(
                 root_dir=Path(config.root_dir),
                 train_data_path=Path(config.train_data_path),
+                base_model_path=Path(config.base_model_path),  
                 model_name=config.model_name,
                 learning_rate=params.learning_rate,
                 weight_decay=params.weight_decay,

@@ -18,6 +18,7 @@ class DataValidationConfig:
 class ModelTrainerConfig:
     root_dir: Path
     train_data_path: Path
+    base_model_path: Path
     model_name: str
     batch_size: int
     epochs: int

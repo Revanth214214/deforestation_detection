@@ -14,6 +14,7 @@ data_validation:
 model_trainer:
   root_dir: artifacts/model_trainer
   train_data_path: artifacts/data_ingestion/dataset_arrays.pt
+  base_model_path: models/best_unet_trial_10.pth 
   model_name: best_unet_model.pth
 
 model_evaluation:
