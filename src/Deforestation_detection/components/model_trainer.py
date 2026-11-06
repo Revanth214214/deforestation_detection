@@ -40,6 +40,13 @@ class ModelTrainer:
 
     def train(self):
         try:
+            save_path = Path(self.config.root_dir) / self.config.model_name
+
+            # Check if the model is already trained and exists
+            if os.path.exists(save_path):
+                logger.info(f"Trained model already exists at {save_path}. Skipping training stage.")
+                return
+
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             logger.info(f"Using device: {device}")
 
@@ -82,7 +89,6 @@ class ModelTrainer:
 
             # 5. Training Loop
             best_val_loss = float('inf')
-            save_path = Path(self.config.root_dir) / self.config.model_name
 
             logger.info(f"Starting training for {self.config.epochs} epochs...")
             

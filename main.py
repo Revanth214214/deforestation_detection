@@ -2,6 +2,7 @@ from deforestation_detection.pipeline.stage_01_DI import DataIngestionTrainingPi
 from deforestation_detection.pipeline.stage_02_DV import DataValidationTrainingPipeline
 from deforestation_detection.pipeline.stage_03_MT import ModelTrainerPipeline
 from deforestation_detection.pipeline.stage_04_ME import ModelEvaluationPipeline
+from inference.pipeline.inference_pipeline import PredictionPipeline
 from deforestation_detection.logging import logger
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -42,4 +43,16 @@ try:
     logger.info(f">>>>>>>>> Stage {STAGE_NAME} Completed <<<<<<<<<<")
 except Exception as e:
     logger.exception(e)
+    raise e
+
+
+STAGE_NAME = "Inference & Change Detection Stage"
+
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    prediction_pipeline = PredictionPipeline()
+    prediction_pipeline.run_pipeline()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\nx=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x\n")
+except Exception as e:
+    logger.exception(f"Stage {STAGE_NAME} failed with error: {e}")
     raise e
