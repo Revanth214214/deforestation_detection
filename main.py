@@ -3,6 +3,7 @@ from deforestation_detection.pipeline.stage_02_DV import DataValidationTrainingP
 from deforestation_detection.pipeline.stage_03_MT import ModelTrainerPipeline
 from deforestation_detection.pipeline.stage_04_ME import ModelEvaluationPipeline
 from inference.pipeline.inference_pipeline import PredictionPipeline
+from visualization.vis_pipeline import VisualizationPipeline
 from deforestation_detection.logging import logger
 
 STAGE_NAME = "Data Ingestion Stage"
@@ -56,3 +57,15 @@ try:
 except Exception as e:
     logger.exception(f"Stage {STAGE_NAME} failed with error: {e}")
     raise e
+
+STAGE_NAME = "Map Visualization & Hectare Calculation Stage"
+
+if __name__ == '__main__':
+    try:
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        vis_pipeline = VisualizationPipeline()
+        vis_pipeline.run_pipeline()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\nx=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x=x\n")
+    except Exception as e:
+        logger.exception(f"Stage {STAGE_NAME} failed with error: {e}")
+        raise e
